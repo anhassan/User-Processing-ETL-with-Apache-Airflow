@@ -68,3 +68,6 @@ The fifth and last step uses a `BashOperator` to read the data from the csv file
 The dependencies among tasks are added using `>>` the bitshift operator such that if `task1>>task2` then task1 occurs before task2.
 
 The diagram below further clarifies sequence of events in the triggered pipeline
+<p align="center">
+  <img src="assets/Etl_user_processing.png" />
+</p>
