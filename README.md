@@ -69,5 +69,5 @@ The dependencies among tasks are added using `>>` the bitshift operator such tha
 
 The diagram below further clarifies sequence of events in the triggered pipeline
 <p align="center">
-  <img src="/assets/Etl_user_processing.png" />
+  <img src="assets/Etl_user_processing.PNG" />
 </p>
