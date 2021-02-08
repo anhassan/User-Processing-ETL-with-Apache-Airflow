@@ -70,4 +70,5 @@ The third step requires fetching the random user from the api using `SimpleHttpO
 The fourth step uses the `PythonOperator` to transform the user by filtering the required parameters from the *JSON* response and push the processed user to a csv file. But there is a need for the *JSON* response from the previous step to reach the python operator. For this purpose we use cross communication(***Xcom***) feature of airflow using `task_instance.xcom_pull(task_ids=[<task_name>])` to get the extracted response from the previous task.
 
 The fifth and last step uses a `BashOperator` to read the data from the csv file(created in the last step) and stores it in the table created in the first step.
+
 The dependencies among tasks are added using `>>` the bitshift operator such that if `task1>>task2` then task1 occurs before task2.
