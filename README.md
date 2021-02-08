@@ -46,7 +46,12 @@ airflow scheduler
 At last airflow can be used to create our long awaited data pipeline
 
 # Design & Implementation
-The application fetches a random user from `https://randomuser.me` using the end point `/api`, then transforms the response and stores the transformed output into a table in a database. All this requires a series of tasks(known as operators in airflow) to be carried out. 
+The application fetches a random user from `https://randomuser.me` using the end point `/api`, then transforms the response and stores the transformed output into a table in a database. All this requires a series of tasks(known as operators in airflow) to be carried out.
+
+The diagram below shows the sequence of tasks in the triggered pipeline
+<p align="center">
+  <img src="assets/Etl_user_processing.PNG" />
+</p>
 
 The first step requires creation of a table in the default sqlite database of airflow using the ***SqliteOperator***. This requires installing the sqlite operator using
 ```python
@@ -66,8 +71,3 @@ The fourth step uses the `PythonOperator` to transform the user by filtering the
 
 The fifth and last step uses a `BashOperator` to read the data from the csv file(created in the last step) and stores it in the table created in the first step.
 The dependencies among tasks are added using `>>` the bitshift operator such that if `task1>>task2` then task1 occurs before task2.
-
-The diagram below further clarifies sequence of events in the triggered pipeline
-<p align="center">
-  <img src="assets/Etl_user_processing.PNG" />
-</p>
